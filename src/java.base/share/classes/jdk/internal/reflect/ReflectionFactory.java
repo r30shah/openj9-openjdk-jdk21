@@ -640,7 +640,7 @@ public class ReflectionFactory {
 
     private static final Config DEFAULT_CONFIG = new Config(false, // noInflation
                                                             15, // inflationThreshold
-                                                            ALL_MH_ACCESSORS, // useDirectMethodHandle
+                                                            0, // useDirectMethodHandle
                                                             false, // useNativeAccessorOnly
                                                             false); // disableSerialConstructorChecks
 
@@ -703,8 +703,8 @@ public class ReflectionFactory {
         }
         val = props.getProperty("jdk.reflect.useDirectMethodHandle");
         if (val != null) {
-            if (val.equals("false")) {
-                useDirectMethodHandle = 0;
+            if (val.equals("true")) {
+                useDirectMethodHandle = ALL_MH_ACCESSORS;
             } else if (val.equals("methods")) {
                 useDirectMethodHandle = METHOD_MH_ACCESSOR;
             } else if (val.equals("fields")) {
